@@ -17,6 +17,9 @@
 # endif
 # define BUFF_SIZE BUFFER_SIZE
 
+# define SUCCESS_0 0
+# define READ_ERROR 1
+# define MALLOC_ERROR -1
 # define COUNT_TOTAL 1
 # define IS_NEW_HEAD 1
 # define IS_NEW_TAIL 0

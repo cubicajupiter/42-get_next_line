@@ -6,7 +6,7 @@
 /*   By: jvalkama <jvalkama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 09:21:44 by jvalkama          #+#    #+#             */
-/*   Updated: 2025/06/06 14:37:27 by jvalkama         ###   ########.fr       */
+/*   Updated: 2025/06/06 15:38:17 by jvalkama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,3 @@ char	*get_next_line(int fd)
 		return (ft_strjoin(&heads_array[fd]));
 	return (NULL);
 }
-
-//EVERYTHING ELSE WORKS EXCEPT:
-//BUFFERSIZE=42  ||  BUFFERSIZE=10000000
-//	files/nl:  2
-//	files/multiple_nlx5:  6
-//	files/multiple_line_with_nl:  6
-//	files/alternate_line_nl_with_nl:  10
-//	files/big_line_with_nl:  2
-//	stdin:  10
-//!!!!  THE ABOVE TESTS WORK WITH BUFFERSIZE=1  !!!!

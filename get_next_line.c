@@ -30,13 +30,3 @@ char	*get_next_line(int fd)
 		return (ft_strjoin(&heads_array[fd]));
 	return (NULL);
 }
-
-//EVERYTHING ELSE WORKS EXCEPT:
-//BUFFERSIZE=42  ||  BUFFERSIZE=10000000
-//	files/nl:  2
-//	files/multiple_nlx5:  6
-//	files/multiple_line_with_nl:  6
-//	files/alternate_line_nl_with_nl:  10
-//	files/big_line_with_nl:  2
-//	stdin:  10
-//!!!!  THE ABOVE TESTS WORK WITH BUFFERSIZE=1  !!!!

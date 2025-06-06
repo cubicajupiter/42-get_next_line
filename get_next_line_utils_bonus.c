@@ -6,7 +6,7 @@
 /*   By: jvalkama <jvalkama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 10:25:47 by jvalkama          #+#    #+#             */
-/*   Updated: 2025/06/06 14:38:22 by jvalkama         ###   ########.fr       */
+/*   Updated: 2025/06/06 15:44:30 by jvalkama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,25 +25,20 @@ int	ft_readtostring(t_buffers **head, int fd)
 		i = 0;
 		string = malloc((BUFF_SIZE + 1) * sizeof(char));
 		if (!string)
-			return (1);
+			return (MALLOC_ERROR);
 		while (i <= BUFF_SIZE)
 			string[i++] = 0;
 		len = read(fd, string, BUFF_SIZE);
-		if (len < 0)
+		if (len <= 0)
 		{
 			free(string);
-			return (1);
-		}
-		else if (len == 0)
-		{
-			free(string);
+			if (len < 0)
+				return (READ_ERROR);
 			break;
 		}
 		cutoff = ft_appendtail(head, string, len, IS_NEW_TAIL);
-		//if (cutoff < 0)
-		//	return (1);
 	}
-	return (0);
+	return (SUCCESS_0);
 }
 
 int		ft_appendtail(t_buffers **head, char *str, int len, int is_newhead)
@@ -53,7 +48,10 @@ int		ft_appendtail(t_buffers **head, char *str, int len, int is_newhead)
 
 	new_node = malloc(sizeof(t_buffers));
 	if (!new_node)
-		return (-1); //different handling maybe
+	{
+		free(str);
+		return (MALLOC_ERROR);
+	}
 	new_node->str = str;
 	new_node->len = len;
 	new_node->cut_i = ft_lengths(new_node, COUNT_CUTOFF);
@@ -134,7 +132,7 @@ void	ft_freenodes(t_buffers **head)
 	while (*head)
 	{
 		tmp = *head;
-		if ((*head)->cut_i && (*head)->cut_i < (*head)->len) // this used to be ((*head)->cut_i < BUFF_SIZE)
+		if ((*head)->cut_i && (*head)->cut_i < (*head)->len)
 		{
 			i = 0;
 			new_len = (*head)->len - (*head)->cut_i;

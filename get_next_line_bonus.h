@@ -6,7 +6,7 @@
 /*   By: jvalkama <jvalkama@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 12:11:41 by jvalkama          #+#    #+#             */
-/*   Updated: 2025/06/06 14:37:08 by jvalkama         ###   ########.fr       */
+/*   Updated: 2025/06/06 15:39:25 by jvalkama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef GET_NEXT_LINE_BONUS_H
@@ -17,6 +17,9 @@
 # endif
 # define BUFF_SIZE BUFFER_SIZE
 
+# define SUCCESS_0 0
+# define READ_ERROR 1
+# define MALLOC_ERROR -1
 # define COUNT_TOTAL 1
 # define IS_NEW_HEAD 1
 # define IS_NEW_TAIL 0
